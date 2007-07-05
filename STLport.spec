@@ -1,9 +1,10 @@
 %define name	STLport
-%define version	5.0.1
-%define release	%mkrel 2
+%define version	5.1.3
+%define release	%mkrel 1
 
-%define major 5
+%define major 5.1
 %define libname %mklibname %name %major
+%define develname %mklibname %name -d
 
 Summary:	Complete C++ standard library header files and libraries
 Name:		%{name}
@@ -26,20 +27,25 @@ This package contains the runtime library for STLport.
 Summary: Complete C++ standard library
 Group: Development/C++
 Provides: lib%{name} = %version-%release
+# Previous package had major 5.0, but was named libSTLport5 and
+# contained libstlport.so.5 . So we have to obsolete it, I think.
+# -AdamW 2007/07
+Obsoletes: %{_lib}%{name}5
 
 %description -n %libname
-This package includes STLport library.
+STLport is a multiplatform STL implementation based on SGI STL.
+This package contains the runtime library for STLport.
 
-%package -n %libname-devel
+%package -n %develname
 Summary: Complete C++ standard library header files and libraries
 Group: Development/C++
 Requires: %libname = %version
 Provides: %name-devel = %version-%release
-Provides: lib%name-devel = %version-%release
+Obsoletes: %{_lib}%{name}5-devel
 
-%description -n %libname-devel
+%description -n %develname
 This package contains the headers that programmers will need to develop
-applications which will use %{lib_name}.
+applications which will use %{libname}.
 STLport is a multiplatform STL implementation based on SGI STL. Complete
 C++ standard library, including <complex> and SGI STL iostreams. If you
 would like to use your code with STLport add
@@ -47,7 +53,7 @@ would like to use your code with STLport add
 link (eg: gcc -nostdinc++ -I/usr/include/stlport x.cc -lstlport).
 
 %prep
-%setup -q -n STLport-%{version}
+%setup -q
 
 %build
 (
@@ -68,12 +74,15 @@ cd build/lib
   INSTALLDIR_LIB=%buildroot%_libdir
 )
 mkdir -p %buildroot%{_libdir}
+mkdir -p %buildroot%{_includedir}
 cp -r lib/* $RPM_BUILD_ROOT%{_libdir}
 cp -r stlport $RPM_BUILD_ROOT%{_includedir}
 rm -rf $RPM_BUILD_ROOT%{_includedir}/stlport/BC50
 rm -rf $RPM_BUILD_ROOT%{_includedir}/stlport/old_hp
 
-
+# the major is 5.1, so it really shouldn't install *.so.5. This would
+# break stuff if it went to major 5.2 in future. -AdamW 2007/07
+rm -f $RPM_BUILD_ROOT%{_libdir}/*.so.5
 
 %post -n %libname -p /sbin/ldconfig
 
@@ -86,7 +95,7 @@ rm -rf $RPM_BUILD_ROOT%{_includedir}/stlport/old_hp
 %defattr(-,root,root)
 %{_libdir}/*.so.*
 
-%files -n %libname-devel
+%files -n %develname
 %defattr(-,root,root)
 %{_libdir}/*.so
-%{_includedir}/*
+%{_includedir}/stlport
