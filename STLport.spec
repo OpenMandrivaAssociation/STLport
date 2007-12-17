@@ -13,7 +13,6 @@ Release:	%{release}
 URL:		http://www.stlport.org/
 License:	GPL
 Group:		Development/C++
-BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 
 BuildRequires:	gcc >= 3.2-0.3mdk
 
