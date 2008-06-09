@@ -84,9 +84,13 @@ rm -rf $RPM_BUILD_ROOT%{_includedir}/stlport/old_hp
 # break stuff if it went to major 5.2 in future. -AdamW 2007/07
 rm -f $RPM_BUILD_ROOT%{_libdir}/*.so.5
 
+%if %mdkversion < 200900
 %post -n %libname -p /sbin/ldconfig
+%endif
 
+%if %mdkversion < 200900
 %postun -n %libname -p /sbin/ldconfig
+%endif
 
 %clean
 [ $RPM_BUILD_ROOT != "/" ] && rm -rf $RPM_BUILD_ROOT
