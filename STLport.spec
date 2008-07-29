@@ -1,6 +1,6 @@
 %define name	STLport
 %define version	5.1.3
-%define release	%mkrel 1
+%define release	%mkrel 3
 
 %define major 5.1
 %define libname %mklibname %name %major
