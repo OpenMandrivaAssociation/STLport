@@ -11,6 +11,7 @@ Group:		Development/C++
 URL:		http://www.stlport.org/
 Source0:	http://www.stlport.com/archive/STLport-%{version}.tar.bz2
 BuildRequires:	libstdc++-devel
+BuildRequires:	libstdc++-static-devel
 # heh, friggin https://qa.mandriva.com/show_bug.cgi?id=64224
 BuildConflicts:	libreoffice-common
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
