@@ -50,6 +50,7 @@ This package contains static libraries and header files need for development.
 
 %build
 # doesn't support --build=
+export CXXFLAGS="%{optflags}"
 ./configure	--prefix=%{_prefix} \
 		--bindir=%{_bindir} \
 		--libdir=%{_libdir} \
@@ -57,7 +58,8 @@ This package contains static libraries and header files need for development.
 		--use-compiler-family=gcc \
 		--with-system-boost \
 		--without-debug
-%make
+%global optflags %{optflags} -pthread -fexceptions -fPIC -fvisibility=hidden
+%make CXXFLAGS="%{optflags} -fexceptions" CFLAGS="%{optflags}"
 
 %install
 %makeinstall_std
