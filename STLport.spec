@@ -1,5 +1,6 @@
-%define	major	5
+%define	major	5.2
 %define	libname	%mklibname stlport %{major}
+%define	oldname	%mklibname stlport 5
 %define	devname	%mklibname -d stlport
 
 Name:		STLport
@@ -50,7 +51,6 @@ This package contains static libraries and header files need for development.
 
 %build
 # doesn't support --build=
-export CXXFLAGS="%{optflags}"
 ./configure	--prefix=%{_prefix} \
 		--bindir=%{_bindir} \
 		--libdir=%{_libdir} \
@@ -66,7 +66,7 @@ export CXXFLAGS="%{optflags}"
 rm -rf %{buildroot}%{buildroot}
 
 %files -n %{libname}
-%{_libdir}/libstlport*.so.%{major}*
+%{_libdir}/libstlport*.so.*
 %doc README
 
 %files -n %{devname}
