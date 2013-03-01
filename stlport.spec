@@ -7,7 +7,7 @@ Version:       5.2.1
 Release:       %mkrel 1
 Summary:       Multiplatform C++ Standard Library (STL implementation)
 Group:         System/Libraries
-License:       GPL
+License:       BSD
 Url:           http://www.stlport.org/
 Source0:       http://sourceforge.net/projects/stlport/files/STLport/STLport-5.2.1/STLport-5.2.1.tar.gz
 
@@ -75,4 +75,6 @@ rm -rf %{buildroot}%{buildroot}
 %dir %_includedir/stlport
 %_includedir/stlport/*
 %_libdir/libstlport.so
+# needs to be distributed as it contains copyright text
+%doc README
 %doc INSTALL* etc/ChangeLog* etc/*.txt etc/*.gif doc/FAQ doc/README.utf8 doc/*.txt
