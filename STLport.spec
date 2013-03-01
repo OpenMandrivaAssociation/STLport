@@ -73,4 +73,4 @@ rm -rf %{buildroot}%{buildroot}
 %dir %{_includedir}/stlport
 %{_includedir}/stlport/*
 %{_libdir}/libstlport*.so
-%doc etc/ChangeLog* etc/*.txt etc/*.gif doc/FAQ doc/README.utf8 doc/*.txt
+%doc README etc/ChangeLog* etc/*.txt etc/*.gif doc/FAQ doc/README.utf8 doc/*.txt
