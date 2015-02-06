@@ -5,7 +5,7 @@
 
 Name:		STLport
 Version:	5.2.1
-Release:	2
+Release:	3
 Summary:	Multiplatform C++ Standard Library (STL implementation)
 Group:		System/Libraries
 License:	BSD
