@@ -9,7 +9,7 @@ Release:	3
 Summary:	Multiplatform C++ Standard Library (STL implementation)
 Group:		System/Libraries
 License:	BSD
-Url:		http://www.stlport.org/
+Url:		https://www.stlport.org/
 Source0:	http://sourceforge.net/projects/stlport/files/STLport/STLport-5.2.1/STLport-5.2.1.tar.gz
 
 BuildRequires:	boost-devel
