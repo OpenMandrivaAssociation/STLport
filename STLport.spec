@@ -12,6 +12,11 @@ License:	BSD
 Url:		https://www.stlport.org/
 Source0:	http://sourceforge.net/projects/stlport/files/STLport/STLport-5.2.1/STLport-5.2.1.tar.gz
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	boost-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	libstdc++-static-devel
